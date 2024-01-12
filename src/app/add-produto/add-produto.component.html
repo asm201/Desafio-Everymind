@@ -1,0 +1,80 @@
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4><b>New Produto</b></h4>
+          </div>
+          <div class="col-sm-6">
+            <a href="#" routerLink="/Home" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>
+               Back</a>
+          </div>
+        </div>
+      </div>
+      <form #produtoForm="ngForm">
+        <div class="table-content">
+          <div class="form-group p-10 row">
+            <div class="col-sm-3">
+              <label for="Nome" class="p-t-b-10">First Name<span class="requiredStar">*</span></label>
+            </div>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="Nome" required maxlength="255"
+                [(ngModel)]="addProdutoForm.Nome" name="Nome" #Nome="ngModel">
+              <div *ngIf="Nome.errors && isSubmitted" class="alert alert-danger validationError">
+                <div [hidden]="!Nome.errors?.['required']">
+                  First Name is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group p-10 row">
+            <div class="col-sm-3">
+              <label for="Codigo" class="p-t-b-10">Last Name<span class="requiredStar">*</span></label>
+            </div>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="Codigo" required maxlength="255"
+                [(ngModel)]="addProdutoForm.Codigo" name="Codigo" #Codigo="ngModel">
+              <div *ngIf="Codigo.errors && isSubmitted" class="alert alert-danger validationError">
+                <div [hidden]="!Codigo.errors?.['required']">
+                  Last Name is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group p-10 row">
+            <div class="col-sm-3">
+              <label class="p-t-b-10">Descricao<span class="requiredStar">*</span></label>
+            </div>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="Descricao" required maxlength="255"
+                [(ngModel)]="addProdutoForm.Descricao" name="Descricao" #Descricao="ngModel">
+              <div *ngIf="Descricao.errors && isSubmitted" class="alert alert-danger validationError">
+                <div [hidden]="!Descricao.errors?.['required']">
+                  Descricao is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group p-10 row">
+            <div class="col-sm-3">
+              <label class="p-t-b-10">Preco<span class="requiredStar">*</span></label>
+            </div>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="Preco" required [(ngModel)]="addProdutoForm.Preco" name="Preco"
+                #Preco="ngModel">
+              <div *ngIf="Preco.errors && isSubmitted" class="alert alert-danger validationError">
+                <div [hidden]="!Preco.errors?.['required']">
+                  Preco is required
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="table-footer">
+          <button class="btn btn-success" (click)="AddProduto(produtoForm.form.valid)">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

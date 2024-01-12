@@ -1,0 +1,45 @@
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4><b>Produtos</b></h4>
+          </div>
+          <div class="col-sm-6">
+            <button class="btn btn-success" (click)="AddProduto()">
+              <i class='fas fa-plus-circle'></i><span>ADD</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover table-bordered table-content">
+        <thead>
+          <tr class="center-align">
+            <th>Nome</th>
+            <th>Código</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produto of produtoList" class="center-align">
+            <td>{{ produto.nome }}</td>
+            <td>{{ produto.codigo }}</td>
+            <td>{{ produto.descricao }}</td>
+            <td>{{ produto.preco }}</td>
+            <td>
+              <a href="#" [routerLink]="['/ViewProduto/', produto.id]" class="btn"><i class='fas fa-eye view'></i></a>
+              <a href="#" [routerLink]="['/EditProduto/', produto.id]" class="btn"><i class="fa fa-edit edit"></i></a>
+              <button type="button" (click)="deleteProdutoConfirmation(produto)" class="btn"><i class='fas fa-trash-alt delete'></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td *ngIf="produtoList.length == 0" colspan="6">No Produto Found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
